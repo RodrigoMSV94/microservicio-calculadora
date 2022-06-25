@@ -24,22 +24,11 @@ public class ResponseExceptionHandler{
 		ExceptionResponse er = new ExceptionResponse(
 				HttpStatus.INTERNAL_SERVER_ERROR.value(), 
 				LocalDateTime.now(), 
-				ex.getMessage(), 
+				ex.getMessage() != null?ex.getMessage():"Error en servidor", 
 				request.getDescription(false));
 		return new ResponseEntity<ExceptionResponse>(er, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	
-	@ExceptionHandler(OperatNotFoundException.class)
-	public final ResponseEntity<ExceptionResponse> manejarModeloNotFoundException(OperatNotFoundException ex, WebRequest request){
-		logger.log("OperatNotFoundException.class");
-		ExceptionResponse er = new ExceptionResponse(
-				HttpStatus.NOT_FOUND.value(), 
-				LocalDateTime.now(), 
-				ex.getMessage(), 
-				request.getDescription(false));
-		return new ResponseEntity<ExceptionResponse>(er, HttpStatus.NOT_FOUND);
-	}
 	
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public final ResponseEntity<ExceptionResponse> manejarMessageNotReadableExceptio(HttpMessageNotReadableException ex, WebRequest request) {

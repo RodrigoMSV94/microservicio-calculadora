@@ -2,12 +2,12 @@ package com.calculadora.service.impl;
 
 import java.math.BigDecimal;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.calculadora.model.Operacion;
 import com.calculadora.service.IOperacionService;
 
-@Component
+@Service
 public class OperacionServiceImpl implements IOperacionService{
 
 	@Override
