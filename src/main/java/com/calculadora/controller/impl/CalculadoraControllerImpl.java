@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.calculadora.controller.CalculadoraController;
-import com.calculadora.dto.Operador;
 import com.calculadora.dto.RespuestaBase;
 import com.calculadora.dto.ResultOperacion;
 import com.calculadora.log.Logger;
@@ -37,10 +36,6 @@ public class CalculadoraControllerImpl implements CalculadoraController{
 
 	@Override
 	public ResponseEntity<RespuestaBase<ResultOperacion>> operaciones(Parametro parametro) {
-		logger.log("llego hasta acá");
-		parametro.getOperador();
-		Operador[] valor = Operador.values();
-		logger.log(Operador.values().toString());
 		
 		Operacion operacion = operacionesMapper.toDTO(parametro.getOperador(), parametro.getNumeros());
 		
