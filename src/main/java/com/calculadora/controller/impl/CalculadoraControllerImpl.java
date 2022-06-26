@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.calculadora.controller.CalculadoraController;
-import com.calculadora.dto.RespuestaBase;
 import com.calculadora.dto.ResultOperacion;
 import com.calculadora.log.Logger;
 import com.calculadora.mapper.OperacionesMapper;
@@ -35,13 +34,13 @@ public class CalculadoraControllerImpl implements CalculadoraController{
 	private IOperacionService operacionService;
 
 	@Override
-	public ResponseEntity<RespuestaBase<ResultOperacion>> operaciones(Parametro parametro) {
+	public ResponseEntity<ResultOperacion> operaciones(Parametro parametro) {
 		
 		Operacion operacion = operacionesMapper.toDTO(parametro.getOperador(), parametro.getNumeros());
 		
 		BigDecimal result = operacionService.execute(operacion);
 		logger.log(result.toString());
-		return new ResponseEntity<>(new RespuestaBase<>(new ResultOperacion(result)), HttpStatus.OK);
+		return new ResponseEntity<>(new ResultOperacion(result), HttpStatus.OK);
 	}
 	
 	

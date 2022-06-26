@@ -54,7 +54,7 @@ class CalculadoraControllerImplTests {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(parametros)));
 			result.andExpect(status().isOk());
-			result.andExpect(jsonPath("$.data.resultado").value(6));
+			result.andExpect(jsonPath("$.resultado").value(6));
 
 	}
 	
@@ -67,7 +67,7 @@ class CalculadoraControllerImplTests {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(parametros)));
 			result.andExpect(status().isOk());
-			result.andExpect(jsonPath("$.data.resultado").value(-4));
+			result.andExpect(jsonPath("$.resultado").value(-4));
 
 	}
 	

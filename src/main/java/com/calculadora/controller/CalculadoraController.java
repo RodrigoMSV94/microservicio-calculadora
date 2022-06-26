@@ -4,7 +4,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.calculadora.dto.RespuestaBase;
 import com.calculadora.dto.ResultOperacion;
 import com.calculadora.model.Parametro;
 
@@ -26,5 +25,5 @@ public interface CalculadoraController {
 			@ApiResponse(responseCode = "404", description = "${api.response-codes.notFound.desc}")
 	})   
 	@PostMapping("/operaciones")
-	ResponseEntity<RespuestaBase<ResultOperacion>> operaciones(@RequestBody Parametro parametro);
+	ResponseEntity<ResultOperacion> operaciones(@RequestBody Parametro parametro);
 }
